@@ -1,17 +1,14 @@
 package spring.mvc.webapp;
 
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
 @SpringBootApplication
-public class WebappApplication {
+public class Application {
 
-	public static void main(String[] args) {
-		 SpringApplication.run(WebappApplication.class, args);
-	}
-
-
-
+    public static void main(final String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
 
 }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration >
+    <Properties>
+        <Property name="LOG_PATTERN_1">
+            %d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${hostName} ---- [%15.15t] %-40.40c{1.} : %m%n%ex
+        </Property>
+        <Property name="LOG_PATTERN_2">
+            %d{ISO8601}{GMT} %-5p %C{2} (%F:%L) - %m%n
+        </Property>
+        <Property name="LOG_PATTERN_3">
+            %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36}:%L - %msg%n
+        </Property>
+        <Property name="LOG_PATTERN_4">
+            %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36}:%L - %msg%n
+        </Property>
+    </Properties>
+    <Appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="${LOG_PATTERN_2}"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+
+        <Root level="debug" includeLocation="true">
+            <AppenderRef ref="ConsoleAppender" />
+        </Root>
+    </Loggers>
+</Configuration>

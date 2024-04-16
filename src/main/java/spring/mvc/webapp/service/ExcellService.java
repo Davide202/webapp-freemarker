@@ -43,37 +43,51 @@ public class ExcellService {
 
     }
 
-    public static List<String> regioni() throws IOException {
+    public static List<String> regioni()  {
         List<String> result = new ArrayList<>();
-        DatiExcell dati = datiExcell != null ? datiExcell : readFileExcell();
-        dati.getRigaExcellComuniList().forEach(rigaExcellComuni -> {
-            String regione = rigaExcellComuni.getRegione();
-            if (!result.contains(regione)) result.add(regione);
-        });
+        try {
+            DatiExcell dati = datiExcell != null ? datiExcell : readFileExcell();
+            dati.getRigaExcellComuniList().forEach(rigaExcellComuni -> {
+                String regione = rigaExcellComuni.getRegione();
+                if (!result.contains(regione)) result.add(regione);
+            });
+
+        } catch (IOException e) {
+            log.error(e);
+        }
+
         return result;
     }
-    public static List<String> provincie(String regione) throws IOException {
+    public static List<String> provincie(String regione)  {
         List<String> result = new ArrayList<>();
-        DatiExcell dati = datiExcell != null ? datiExcell : readFileExcell();
-        dati.getRigaExcellComuniList().forEach(rigaExcellComuni -> {
-            String r = rigaExcellComuni.getRegione();
-            if (r.equals(regione)){
-                String provincia = rigaExcellComuni.getProvincia();
-                if (!result.contains(provincia)) result.add(provincia);
-            }
-        });
+        try{
+            DatiExcell dati = datiExcell != null ? datiExcell : readFileExcell();
+            dati.getRigaExcellComuniList().forEach(rigaExcellComuni -> {
+                String r = rigaExcellComuni.getRegione();
+                if (r.equals(regione)){
+                    String provincia = rigaExcellComuni.getProvincia();
+                    if (!result.contains(provincia)) result.add(provincia);
+                }
+            });
+        } catch (IOException e) {
+            log.error(e);
+        }
         return result;
     }
-    public static List<String> comuni(String provincia) throws IOException {
+    public static List<String> comuni(String provincia)  {
         List<String> result = new ArrayList<>();
-        DatiExcell dati = datiExcell != null ? datiExcell : readFileExcell();
-        dati.getRigaExcellComuniList().forEach(rigaExcellComuni -> {
-            String p = rigaExcellComuni.getProvincia();
-            if (p.equals(provincia)){
-                String comune = rigaExcellComuni.getProvincia();
-                if (!result.contains(comune)) result.add(comune);
-            }
-        });
+        try{
+            DatiExcell dati = datiExcell != null ? datiExcell : readFileExcell();
+            dati.getRigaExcellComuniList().forEach(rigaExcellComuni -> {
+                String p = rigaExcellComuni.getProvincia();
+                if (p.equals(provincia)){
+                    String comune = rigaExcellComuni.getComune();
+                    if (!result.contains(comune)) result.add(comune);
+                }
+            });
+        } catch (IOException e) {
+            log.error(e);
+        }
         return result;
     }
 }

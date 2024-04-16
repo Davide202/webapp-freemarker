@@ -43,7 +43,7 @@ public class PdfService {
 
     }
 
-    public File getPdf2(String templateName,Object input) throws IOException {
+    public File getPdf(String templateName,Object input) throws IOException {
 
         log.info("START getPdf()");
         Path tempFilePath = getPath();
